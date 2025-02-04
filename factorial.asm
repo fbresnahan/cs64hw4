@@ -12,7 +12,8 @@
 #Data Area (i.e. memory setup directive)
 .data
 	string1: .asciiz "Enter a number:\n"
-	string2: .asciiz "Factorial of 1 is:\n"
+	string2: .asciiz "Factorial of "
+	string4: .asciiz " is:\n"
 	string3: .asciiz "\n"
 #Text Area (i.e. instructions/code directive)
 .text
@@ -24,6 +25,12 @@ main:
 	syscall
 	move $t0, $v0
 	la $a0, string2
+	li $v0, 4
+	syscall
+	move $a0, $t0
+	li $v0, 1
+	syscall
+	la $a0, string4
 	li $v0, 4
 	syscall
 	li $t1, 1
